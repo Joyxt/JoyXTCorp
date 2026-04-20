@@ -1,0 +1,74 @@
+:root {
+    --bg-main: #313338;
+    --bg-side: #2B2D31;
+    --bg-tertiary: #1E1F22;
+    --text-main: #DBDEE1;
+    --text-muted: #B5BAC1;
+    --accent: #5865F2;
+    --white: #FFFFFF;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: Arial, sans-serif; background-color: var(--bg-main); color: var(--text-main); margin: 0; line-height: 1.6; }
+header { background-color: var(--bg-side); padding: 30px; text-align: center; border-bottom: 1px solid var(--bg-tertiary); }
+h1 { color: var(--white); }
+.lang-switcher button { background: var(--bg-main); border: 1px solid var(--accent); color: white; padding: 5px 15px; border-radius: 4px; cursor: pointer; }
+.lang-switcher button.active { background: var(--accent); }
+.toc { position: sticky; top: 0; background: var(--bg-side); padding: 10px; text-align: center; border-bottom: 1px solid var(--bg-tertiary); z-index: 100; }
+.toc a { color: var(--accent); text-decoration: none; margin: 0 10px; font-weight: bold; font-size: 0.9em; }
+main { max-width: 850px; margin: 20px auto; padding: 0 20px; }
+.card { background: var(--bg-side); padding: 30px; border-radius: 8px; margin-bottom: 20px; }
+h2 { color: var(--white); border-bottom: 1px solid var(--accent); padding-bottom: 10px; margin-top: 30px; }
+footer { text-align: center; padding: 30px; color: var(--text-muted); font-size: 0.8em; }
+
+.accent-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+.accent-link:hover {
+    text-decoration: underline;
+    color: var(--white);
+}
+
+/* --- AJOUTS POUR LA PAGE MEDIA (SANS DÉNATURER L'EXISTANT) --- */
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Ratio 16/9 */
+    height: 0;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--bg-tertiary);
+    border-radius: 8px;
+}
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.media-item {
+    background: var(--bg-tertiary);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.media-item img {
+    max-width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--bg-main);
+}

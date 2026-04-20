@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadpole Cipher - English Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Tadpole Cipher</h1>
+    <div class="lang-switcher">
+        <button onclick="window.location.href='tadpole_cipher.html'">Français</button>
+        <button class="active">English</button>
+    </div>
+</header>
+
+<nav class="toc">
+    <strong>Summary:</strong>
+    <a href="#purpose">Purpose</a>
+    <a href="#mechanics">Mechanics</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#tradeoffs">Trade-offs</a>
+    <a href="#scenarios">Scenarios</a>
+    <a href="#security">Security Evaluation</a>
+    <a href="#usage">Quick Usage</a>
+    <a href="#legal">Legal</a>
+    <a href="index.html" style="color:var(--text-muted)">[Home]</a>
+</nav>
+
+<main>
+    <div class="card">
+        <img src="img/Tadpole_Cipher.png" alt="Tadpole Cipher Logo" style="width: 97px; height: 67px; max-width: 50%; display: block; margin-bottom: 0x; border-radius: 0px;">
+        <p><strong>Tadpole Cipher</strong></p>
+        <p>A tactical offline encryption tool to protect your communications against third-party analysis and artificial intelligence.</p>
+        
+        <h2 id="purpose">🛡️ The Purpose (Raison d'Être)</h2>
+        <p>In our current digital ecosystem, even "end-to-end encrypted" messengers collect valuable metadata. Your texts pass through dozens of servers, are indexed by algorithms, and analyzed by artificial intelligence for profiling or model training (LLMs).<br>
+        Tadpole Cipher proposes a radical approach: <strong>encryption at the source, totally disconnected from any network.</strong><br>
+        Tadpole Cipher is not a messenger. It is a security airlock, a pure text processing tool that encrypts your messages before they even touch the Internet. Once your text is locked (supporting accents, complex punctuation, emojis, and Japanese), it transforms into a strict random character string.<br>
+        You can copy this gibberish and paste it into WhatsApp, Telegram, Discord, via SMS, or Email. For the transport platform, the ISP, or a behavioral analysis AI, the message is unreadable and devoid of any semantics. They will know neither your mood nor your intentions.</p>
+
+        <h2 id="mechanics">⚙️ Cryptographic Mechanics (How does it work?)</h2>
+        <p>The core of Tadpole Cipher relies on strict and deterministic symmetric key derivation. To lock or unlock a message, two complementary elements are required simultaneously:<br>
+        <strong>A PIN Code (4 digits):</strong> It acts as a fast cryptographic seed and a psychological lock for the user.<br>
+        <strong>A Master Phrase (3 words minimum):</strong> This is the true cryptographic secret. It brings the necessary entropy and mathematical complexity.<br>
+        Behind the scenes: The algorithm merges the PIN and the Master Phrase, then subjects this combination to a one-way cryptographic hash function (via the robust SHA-256 standard). This process generates an ultra-secure 256-bit seed, which feeds a pseudo-random number generator (PRNG).<br>
+        The text is then uniquely encrypted byte by byte. The beauty of this system lies in its asymmetry of effort: encryption is instantaneous for you, but mathematically impossible to reverse for an attacker who does not possess the exact combination of the PIN and the phrase.</p>
+
+        <h2 id="architecture">🏗️ Architecture and Technical Choices</h2>
+        <p>The project was designed as a pocket vault: lightweight, cross-platform, and visually premium.<br>
+        <strong>Framework:</strong> Developed in Flutter (Dart) for optimized native compilation on Android, Windows, and potentially iOS/Linux from a single codebase.<br>
+        <strong>Interface & UX:</strong> Fluid state management via Provider to decouple mathematical logic from the graphical interface. "Zero Latency" haptic and sound feedback (assets preloaded in RAM via audioplayers for an immediate tactile sensation).<br>
+        <strong>Aesthetics (GLSL Shaders):</strong> Advanced use of flutter_shaders. The application is not just secure; it is alive. The background is a dynamic cryptographic fluid (running at 60 FPS) that reacts to your touch and visually validates encryption success (Blue/Cyan) or errors (Red), ensuring a premium experience without sacrificing your device's battery.</p>
+
+        <h2 id="tradeoffs">⚖️ Compromis and Trade-offs</h2>
+        <p>Security is a matter of choice. Here are ours:<br>
+        <strong>1. Standalone Tool vs. Messenger Plugin</strong><br>
+        The choice: A disconnected standalone application. Why? Creating a custom keyboard or a plugin would require asking your operating system for critical permissions (permanent keystroke logging, network access). Tadpole Cipher asks for no network permissions. By technical design, it is physically impossible for your data to leak.<br>
+        <strong>2. Symmetric vs. Asymmetric Encryption (Public/Private Keys)</strong><br>
+        The choice: Symmetric (Shared Secret). Why? Asymmetric often requires a central server to exchange public keys or manage a complex keychain. Symmetric is decentralized by nature: it allows a group to agree on a "Code + Phrase" in person (offline) and use it immediately.</p>
+
+        <h2 id="scenarios">📖 Tactical Usage Scenarios (Evolving Protocols)</h2>
+        <p>The immense strength of Tadpole's symmetric system is that it allows for the creation of undecipherable rotating protocols without ever communicating the password over a network.<br>
+        <strong>The Literary Protocol:</strong> Two allies own the same physical edition of "Madame Bovary". They agree on a rule:<br>
+        PIN = The page number read that day (e.g., 0042).<br>
+        Phrase = The first complete sentence on that same page.<br>
+        Advantage: The password changes every day as they read, without either of them having to send the code via SMS.<br>
+        <strong>The Geographic Calendar Protocol:</strong> A couple buys the same landscape photo calendar for the year.<br>
+        PIN = The current day and month (e.g., March 14th = 1403).<br>
+        Phrase = The name of the city on the photo of the month + a fixed password (e.g., "Kyoto Cherry Blossoms Alpha").<br>
+        Advantage: A daily rotation of the seed (PIN) and monthly rotation of the entropy (Phrase), totally untraceable from the outside.<br>
+        <strong>The Personal Vault (Cloud Notes):</strong> Tadpole is not just for communicating! Do you use Evernote, Notion, or Google Keep? Encrypt your passwords, private journals, or sensitive memos with Tadpole before pasting them into your Cloud. Even if the company's servers are hacked, your notes will remain undecipherable.</p>
+
+        <h2 id="security">🔒 Security Evaluation</h2>
+        <p>✅ <strong>Neutralized Attack Vectors (Strengths)</strong><br>
+        <strong>Man-In-The-Middle (MITM):</strong> Totally ineffective. If an ISP, a public Wi-Fi router, or Discord's servers intercept the message, they only obtain noise.<br>
+        <strong>Behavioral Analysis (AI):</strong> The encrypted data is pseudo-random. AI for moderation, censorship, or advertising profiling are blinded.<br>
+        <strong>Data Siphoning (Cloud Leak):</strong> 100% offline application. No database to hack.<br>
+        ⚠️ <strong>Limitations (The Human Factor)</strong><br>
+        <strong>Operational Security (OPSEC):</strong> The vault's robustness depends on how you hide the key. If you send your Master Phrase in plain text via SMS to your recipient, the encryption is void. Transmit your keys by word of mouth.<br>
+        <strong>Brute-Force Attack:</strong> If your phrase is too obvious ("I eat an apple") or too short, a computer could attempt all dictionary combinations.<br>
+        <strong>Solution:</strong> It is a simple system but one of absolute robustness if the user does their part. Choose an absurd and complex phrase, and change it periodically with your contacts.</p>
+
+        <h2 id="usage">🚀 Quick Usage</h2>
+        <p>The Tadpole Cipher interface is designed to be mastered in less than 10 seconds. The application is divided into two distinct spaces.<br>
+        <strong>Step 1: The Identification Airlock (Home)</strong><br>
+        1. Open the app.<br>
+        2. Enter your PIN Code (4 digits). (You can click the eye icon to hide/reveal entry).<br>
+        3. Enter your Master Phrase (3 words minimum, spaced).<br>
+        4. Once the security condition is met, the pulsing "Private Connectivity" icon appears. Click it to access the terminal.<br>
+        <strong>Step 2: The Tactical Terminal (Cipher)</strong><br>
+        Paste the plain text (or the encrypted text received from a friend) into the large top box. (A "Paste" icon is available at the top right).<br>
+        Press <strong>ENCRYPT</strong> (to lock) or <strong>DECRYPT</strong> (to read). The background fluid and sound feedback will validate the operation's success.<br>
+        The result appears in the bottom box. Click the Copy icon (bottom right) to send it wherever you wish!</p>
+
+        <h2 id="legal">⚠️ Legal Warning</h2>
+        <p>This project is published as open-source for strictly educational and research purposes. It was designed to demonstrate the effectiveness of symmetric cryptography principles, decentralized software architecture, and the integration of real-time graphical shaders in Flutter.<br>
+        The author declines any responsibility for the use of this tool in illegal contexts, or for the transmission of critical/vital data. Remember that absolute security does not exist in computing, and the weak link is always the human.</p>
+    </div>
+</main>
+<main>
+    
+    <section class="card">
+        <h2>📸 Screnn Shot</h2>
+        <div class="media-grid">
+            <div class="media-item">
+                <img src="img/screen1.jpg" alt="Capture 1">
+                <p style="font-size: 0.8em; margin-top: 5px;">Home</p>
+            </div>
+            <div class="media-item">
+                <img src="img/screen2.jpg" alt="Capture 2">
+                <p style="font-size: 0.8em; margin-top: 5px;">Entered codes</p>
+            </div>
+            <div class="media-item">
+                <img src="img/screen3.jpg" alt="Capture 3">
+                <p style="font-size: 0.8em; margin-top: 5px;">Encryption Decryption</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>📺 Video Demonstration</h2>
+        <p>Visualisation de l'application en action et rendu des shaders.</p>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ID_VIDEO" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>👨‍💻 Author: JOYXT for JOYXT CORP ✉️ Contact: joyxt@proton.com</p>
+    <p>Developed with passion, benevolent paranoia, and joy.</p>
+</footer>
+
+</body>
+</html>

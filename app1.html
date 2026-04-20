@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadpole Cipher - Documentation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Tadpole Cipher</h1>
+    <p>Offline Tactical Encryption Tool</p>
+    <div class="lang-switcher">
+        <button onclick="setLanguage('fr')" id="btn-fr" class="active">Français</button>
+        <button onclick="setLanguage('en')" id="btn-en">English</button>
+    </div>
+</header>
+
+<nav class="toc">
+    <strong>Sommaire :</strong>
+    <a href="#vision" class="fr">Philosophie</a><a href="#vision" class="en">Philosophy</a>
+    <a href="#mecanique" class="fr">Mécanique</a><a href="#mecanique" class="en">Mechanism</a>
+    <a href="#tech" class="fr">Architecture</a><a href="#tech" class="en">Architecture</a>
+    <a href="#tuto" class="fr">Tutoriel</a><a href="#tuto" class="en">Tutorial</a>
+    <a href="#legal" class="fr">Légal</a><a href="#legal" class="en">Legal</a>
+</nav>
+
+<main>
+    <div id="lang-fr" class="lang-content">
+        <section id="vision" class="card">
+            <h2>🛡️ La Raison d'Être</h2>
+            <p>Dans notre écosystème numérique actuel, même les messageries dites "chiffrées de bout en bout" collectent de précieuses métadonnées. <strong>Tadpole Cipher</strong> propose une approche radicale : le chiffrement à la source, totalement déconnecté de tout réseau.</p>
+            <p>C'est un sas de sécurité qui transforme votre texte en une suite de caractères aléatoires avant même qu'ils ne touchent Internet.</p>
+        </section>
+
+        <section id="mecanique" class="card">
+            <h2>⚙️ La Mécanique Cryptographique</h2>
+            <p>Le système repose sur une dérivation de clé symétrique stricte :</p>
+            <ul>
+                <li><strong>Code PIN (4 chiffres) :</strong> Seed cryptographique rapide.</li>
+                <li><strong>Phrase Maître (3 mots min) :</strong> Apporte l'entropie nécessaire.</li>
+            </ul>
+            <pre><code>Algorithme : SHA-256 + PRNG + Chiffrement octet par octet.</code></pre>
+        </section>
+
+        <section id="tech" class="card">
+            <h2>🏗️ Choix Techniques</h2>
+            <ul>
+                <li><strong>Framework :</strong> Flutter (Dart) pour une compilation native.</li>
+                <li><strong>Interface :</strong> Gestion d'état via Provider, retour haptique.</li>
+                <li><strong>Esthétique :</strong> Shaders GLSL (fluide dynamique à 60 FPS).</li>
+            </ul>
+        </section>
+
+        <section id="tuto" class="card">
+            <h2>🚀 Tutoriel Sommaire</h2>
+            <h3>Étape 1 : Identification</h3>
+            <p>Entrez votre PIN et votre Phrase Maître. Cliquez sur l'icône pulsante pour accéder au terminal.</p>
+            <h3>Étape 2 : Le Terminal</h3>
+            <p>Collez votre texte, appuyez sur <strong>CHIFFRER</strong>. Copiez le résultat et envoyez-le via n'importe quel canal (Discord, WhatsApp, etc.).</p>
+        </section>
+
+        <section id="legal" class="card" style="border: 1px solid #ff4444;">
+            <h2>⚠️ Avertissement Légal</h2>
+            <p>Projet à des fins éducatives. L'auteur décline toute responsabilité en cas d'usage illégal.</p>
+        </section>
+    </div>
+
+    <div id="lang-en" class="lang-content" style="display:none;">
+        <section id="vision-en" class="card">
+            <h2>🛡️ The Mission</h2>
+            <p>In today's digital ecosystem, even "end-to-end encrypted" messengers collect metadata. <strong>Tadpole Cipher</strong> offers a radical approach: source encryption, totally disconnected from any network.</p>
+        </section>
+
+        <section id="mecanique-en" class="card">
+            <h2>⚙️ Cryptographic Mechanism</h2>
+            <p>The core relies on a strict symmetric key derivation:</p>
+            <ul>
+                <li><strong>PIN Code (4 digits):</strong> Fast cryptographic seed.</li>
+                <li><strong>Master Phrase (3 words min):</strong> Provides necessary entropy.</li>
+            </ul>
+            <pre><code>Algorithm: SHA-256 + PRNG + Byte-by-byte encryption.</code></pre>
+        </section>
+
+        <section id="tech-en" class="card">
+            <h2>🏗️ Technical Stack</h2>
+            <ul>
+                <li><strong>Framework:</strong> Flutter (Dart) for native performance.</li>
+                <li><strong>UI/UX:</strong> Provider state management, haptic feedback.</li>
+                <li><strong>Visuals:</strong> GLSL Shaders (dynamic fluid at 60 FPS).</li>
+            </ul>
+        </section>
+
+        <section id="tuto-en" class="card">
+            <h2>🚀 Quick Tutorial</h2>
+            <h3>Step 1: Identification</h3>
+            <p>Enter your PIN and Master Phrase. Click the pulsing icon to enter the terminal.</p>
+            <h3>Step 2: Tactical Terminal</h3>
+            <p>Paste your text, press <strong>ENCRYPT</strong>. Copy the result and send it via any app.</p>
+        </section>
+
+        <section id="legal-en" class="card" style="border: 1px solid #ff4444;">
+            <h2>⚠️ Legal Disclaimer</h2>
+            <p>Educational purposes only. The author is not responsible for any misuse or illegal activities.</p>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <p>JOYXT CORP | <a href="mailto:joyxt@proton.com" style="color:var(--accent);">joyxt@proton.com</a></p>
+</footer>
+
+<script>
+function setLanguage(lang) {
+    // Masquer tous les contenus
+    document.querySelectorAll('.lang-content').forEach(div => div.style.display = 'none');
+    document.querySelectorAll('.fr, .en').forEach(el => el.style.display = 'none');
+    
+    // Afficher la langue choisie
+    document.getElementById('lang-' + lang).style.display = 'block';
+    document.querySelectorAll('.' + lang).forEach(el => el.style.display = 'inline-block');
+
+    // Gérer les boutons
+    document.getElementById('btn-fr').classList.remove('active');
+    document.getElementById('btn-en').classList.remove('active');
+    document.getElementById('btn-' + lang).classList.add('active');
+}
+// Initialisation au chargement
+setLanguage('fr');
+</script>
+
+</body>
+</html>

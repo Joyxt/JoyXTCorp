@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChronyFit - FR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>ChronyFit</h1>
+     <div class="lang-switcher">
+        <button onclick="window.location.href='ChronyFit.html'">Français</button>
+        <button class="active">English</button>
+    </div>
+</header>
+
+<nav class="toc">
+    <strong>Summary:</strong>
+    <a href="#Purpose">Purpose</a>
+    <a href="#Mechanics">Mechanics</a>
+    <a href="#Use case">Use case</a>
+    <a href="#Scenarios">Scenarios</a>
+    <a href="#Legal">Legal</a>
+    <a href="index.html" style="color:var(--text-muted)">[Retour Accueil]</a>
+</nav>
+
+<main>
+    <div class="card">
+        <img src="img/ChronyFit_iCO.png" alt="ChronyFit Logo" style="width: 100px; height: 100px; display: block; margin-bottom: 10px; border-radius: 50%;">
+        <p><strong>Chrony Fit</strong></p>
+        <p>An immersive sports timing assistant, designed to transform effort into a dynamic and frictionless visual experience.</p>
+        
+        <h2 id="Purpose">⚡ Purpose</h2>
+        <p>Most fitness apps are either too complex or visually austere. Chrony Fit was born from a desire to merge technical performance and generative design.<br>
+        The goal is simple: to offer a HIIT (High Intensity Interval Training) tool that does not just count the seconds, but accompanies the user with a responsive visual and sound atmosphere.<br>
+        Chrony Fit eliminates distractions to focus on the essentials: the exercise sequence, the time remaining, and the preparation for the next step, all in a fluid and aesthetic environment.</p>
+
+        <h2 id="Mechanics">⚙️ Mechanics</h2>
+        <p>Under the hood, Chrony Fit leverages the most advanced capabilities of the Flutter framework:<br>
+        <strong>Responsive Architecture :</strong> The application uses the pattern <em>Provider</em> to synchronize the stopwatch status with the user interface in real time, ensuring millisecond accuracy without slowing down the UI.<br>
+        <strong>GLSL Shader Engine :</strong> Unlike traditional apps that use static images, Chrony Fit incorporates <em>Fragment Shaders</em> Compiled. Both "Pollen" (editing) and "Working" (exercises) modes are rendered at 60 FPS by the GPU, creating a vibrant experience with minimal battery consumption.<br>
+        <strong>Tactical Audio :</strong> To avoid frustrating audio latencies during exercise transitions, the audio engine uses a <em>Low Latency</em> mode with preloading of transition beeps in RAM. The last three seconds of each block trigger a precise audio signal for a smooth transition without having to look at the screen.</p>
+
+        <h2 id="Use case">🚀 Use case & UX</h2>
+        <p>The interface was designed to be used with sweaty hands during intense exertion:<br>
+        <strong>1. Routine Design :</strong> In edit mode, you can rename your exercises, adjust their duration using an intuitive selector, and rearrange the order of your session with a simple <em>Drag-and-Drop</em>.<br>
+        <strong>2. JSON Persistence:</strong> Your workouts aren't confined to the app. ChronyFit lets you export your complex sequences to a universal JSON file or import routines created by other athletes.<br>
+        <strong>3. Monitoring :</strong> Once launched, the "Run" screen displays a "NEXT" indicator that alerts the user to the next exercise, allowing them to anticipate equipment or position changes before the audio signal.</p>
+
+        <h2 id="Scenarios">📖 Scenarios</h2>
+        <p>Chrony Fit adapts to multiple sports protocols thanks to its total flexibility :<br>
+        <strong>The Classic Tabata Protocol :</strong> Set up 8 cycles of 20 seconds of intense effort followed by 10 seconds of rest. Visualize the acceleration of light rays during effort and the return to calm of particles during rest.<br>
+        <strong>Yoga / Flow Sequences :</strong> Use longer durations (90 to 120 seconds) without aggressive beeps to maintain your poses, using the color change of the visual "sticker" to identify the pose transition.<br>
+        <strong>Weight Training and Rest Time :</strong> Program your sets of repetitions and use the timer to ensure strict recovery time between each set, guaranteeing optimal hypertrophy.</p>
+
+        <h2 id="Legal">⚠️ Legal Notice</h2>
+        <p>Chrony Fit is a training assistance tool. The author and JOYXT CORP cannot be held responsible for injuries related to improper exercise execution or physical overexertion. <br>
+        The app is provided as is. Listen to your body and consult a healthcare professional before starting a high-intensity program.</p>
+    </div>
+</main>
+
+<main>
+    <section class="card">
+        <h2>📸 Captures d'Écran</h2>
+        <div class="media-grid">
+            <div class="media-item">
+                <div style="width:100%; height:150px; background:#333; display:flex; align-items:center; justify-content:center; border-radius:8px;">[Mode Édition]</div>
+                <p style="font-size: 0.8em; margin-top: 5px;">Organisation de la séance</p>
+            </div>
+            <div class="media-item">
+                <div style="width:100%; height:150px; background:#333; display:flex; align-items:center; justify-content:center; border-radius:8px;">[Mode Run]</div>
+                <p style="font-size: 0.8em; margin-top: 5px;">Visualisation dynamique</p>
+            </div>
+            <div class="media-item">
+                <div style="width:100%; height:150px; background:#333; display:flex; align-items:center; justify-content:center; border-radius:8px;">[Import/Export]</div>
+                <p style="font-size: 0.8em; margin-top: 5px;">Gestion des fichiers JSON</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>📺 Démonstration Vidéo</h2>
+        <p>Aperçu de la fluidité des shaders et des transitions sonores en temps réel.</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ID_VIDEO" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>👨‍💻 Auteur : Développé par JOYXT pour JOYXT CORP</p>
+    <p>Conçu pour l'excellence, la sueur, et la performance visuelle.</p>
+</footer>
+</body>
+</html>

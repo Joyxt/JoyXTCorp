@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadpole Cipher - FR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>Tadpole Cipher</h1>
+    <div class="lang-switcher">
+        <button class="active">Français</button>
+        <button onclick="window.location.href='tadpole_cipher_en.html'">English</button>
+    </div>
+</header>
+
+<nav class="toc">
+    <strong>Sommaire :</strong>
+    <a href="#raison">Raison d'Être</a>
+    <a href="#mecanique">Mécanique</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#compromis">Compromis</a>
+    <a href="#scenarios">Scénarios</a>
+    <a href="#securite">Sécurité</a>
+    <a href="#utilisation">Utilisation</a>
+    <a href="#legal">Légal</a>
+    <a href="index.html" style="color:var(--text-muted)">[Retour Accueil]</a>
+</nav>
+
+<main>
+    <div class="card">
+        <img src="img/Tadpole_Cipher.png" alt="Tadpole Cipher Logo" style="width: 97px; height: 67px; max-width: 50%; display: block; margin-bottom: 0x; border-radius: 0px;">
+        <p><strong>Tadpole Cipher</strong></p>
+        <p>Un outil de chiffrement tactique hors-ligne pour protéger vos communications contre l'analyse tierce et l'intelligence artificielle.</p>
+        
+        <h2 id="raison">🛡️ La Raison d'Être</h2>
+        <p>Dans notre écosystème numérique actuel, même les messageries dites "chiffrées de bout en bout" collectent de précieuses métadonnées. Vos textes transitent par des dizaines de serveurs, sont indexés par des algorithmes et analysés par des intelligences artificielles pour le profilage ou l'entraînement de modèles (LLMs).<br>
+        Tadpole Cipher propose une approche radicale : le chiffrement à la source, totalement déconnecté de tout réseau.<br>
+        Tadpole Cipher n'est pas une messagerie. C'est un sas de sécurité, un outil de traitement de texte pur qui chiffre vos messages avant même qu'ils ne touchent Internet. Une fois votre texte verrouillé (supportant les accents, la ponctuation complexe et les emojis, le Japonais), il se transforme en une suite de caractères aléatoires stricte.<br>
+        Vous pouvez copier ce charabia et le coller dans WhatsApp, Telegram, Discord, par SMS, ou par Email. Pour la plateforme de transport, le FAI, ou une IA d'analyse comportementale, le message est illisible et dénué de toute sémantique. Ils ne connaîtront ni votre humeur, ni vos intentions.</p>
+
+        <h2 id="mecanique">⚙️ La Mécanique Cryptographique (Comment ça marche ?)</h2>
+        <p>Le cœur de Tadpole Cipher repose sur une dérivation de clé symétrique stricte et déterministe. Pour verrouiller ou déverrouiller un message, deux éléments complémentaires sont requis simultanément :<br>
+        <strong>Un Code PIN (4 chiffres) :</strong> Il agit comme un seed cryptographique rapide et un verrou psychologique pour l'utilisateur.<br>
+        <strong>Une Phrase Maître (3 mots minimum) :</strong> C'est le véritable secret cryptographique. Elle apporte l'entropie et la complexité mathématique nécessaires.<br>
+        La technique en arrière-plan : L'algorithme fusionne le PIN et la Phrase Maître, puis soumet cette combinaison à une fonction de hachage cryptographique unidirectionnelle (via le standard robuste SHA-256). Ce processus génère une graine (seed) ultra-sécurisée de 256 bits, qui vient nourrir un générateur de nombres pseudo-aléatoires (PRNG).<br>
+        Le texte est ensuite chiffré octet par octet de manière unique. La beauté de ce système réside dans son asymétrie d'effort : le chiffrement est instantané pour vous, mais mathématiquement impossible à inverser pour un attaquant qui ne possèderait pas la combinaison exacte du PIN et de la phrase.</p>
+
+        <h2 id="architecture">🏗️ Architecture et Choix Techniques</h2>
+        <p>Le projet a été pensé comme un coffre-fort de poche : léger, multiplateforme et visuellement premium.<br>
+        <strong>Framework :</strong> Développé en Flutter (Dart) pour une compilation native optimisée sur Android, Windows, et potentiellement iOS/Linux depuis une seule base de code.<br>
+        <strong>Interface & UX :</strong> * Gestion d'état fluide via Provider pour découpler la logique mathématique de l'interface graphique.<br>
+        Retour haptique et sonore "Zéro Latence" (préchargement en RAM des assets via audioplayers pour une sensation tactile immédiate).<br>
+        <strong>Esthétique (Shaders GLSL) :</strong> Utilisation avancée de flutter_shaders. L'application ne se contente pas d'être sécurisée, elle est vivante. Le fond d'écran est un fluide cryptographique dynamique (tournant à 60 FPS) qui réagit à vos actions tactiles et valide visuellement les succès (Bleu/Cyan) ou erreurs (Rouge) de chiffrement, garantissant une expérience premium sans sacrifier la batterie de votre appareil.</p>
+
+        <h2 id="compromis">⚖️ Compromis et Arbitrages (Trade-offs)</h2>
+        <p>La sécurité est une affaire de choix. Voici les nôtres :<br>
+        <strong>1. Outil Standalone vs Plugin de Messagerie</strong><br>
+        Le choix : Une application autonome déconnectée. Pourquoi ? Créer un clavier personnalisé ou un plugin obligerait à demander des permissions critiques à votre système d'exploitation (lecture permanente des frappes au clavier, accès réseau). Tadpole Cipher ne demande aucune permission réseau. Par design technique, il est physiquement impossible que vos données fuitent.<br>
+        <strong>2. Chiffrement Symétrique vs Asymétrique (Clés Publiques/Privées)</strong><br>
+        Le choix : Symétrique (Secret partagé). Pourquoi ? L'asymétrique nécessite souvent un serveur central pour échanger les clés publiques ou gérer un trousseau complexe. Le symétrique est décentralisé par nature : il permet à un groupe de se mettre d'accord sur un "Code + Phrase" de vive voix (hors-ligne), et de l'utiliser immédiatement.</p>
+
+        <h2 id="scenarios">📖 Scénarios d'utilisation tactique (Protocoles évolutifs)</h2>
+        <p>L'immense force du système symétrique de Tadpole, c'est qu'il permet de créer des protocoles tournants indéchiffrables sans jamais communiquer le mot de passe sur un réseau.<br>
+        <strong>Le Protocole Littéraire :</strong> Deux alliés possèdent la même édition physique de Madame Bovary. Ils conviennent d'une règle :<br>
+        PIN = Le numéro de la page lue ce jour-là (ex: 0042).<br>
+        Phrase = La première phrase complète de cette même page.<br>
+        Avantage : Le mot de passe change tous les jours au fil de la lecture, sans qu'aucun des deux n'ait à s'envoyer le code par SMS.<br>
+        <strong>Le Protocole du Calendrier Géographique :</strong> Un couple achète le même calendrier photo de paysages pour l'année.<br>
+        PIN = Le jour et le mois actuel (ex: le 14 Mars = 1403).<br>
+        Phrase = Le nom de la ville sur la photo du mois + un mot de passe fixe (ex: "Kyoto Cerisiers Alpha").<br>
+        Avantage : Une rotation quotidienne du seed (PIN) et mensuelle de l'entropie (Phrase), totalement intraçable de l'extérieur.<br>
+        <strong>Le Coffre-fort Personnel (Notes Cloud) :</strong> Tadpole n'est pas fait que pour communiquer ! Vous utilisez Evernote, Notion ou Google Keep ? Chiffrez vos mots de passe, vos journaux intimes ou vos mémos sensibles avec Tadpole avant de les coller dans votre Cloud. Même en cas de piratage des serveurs de l'entreprise, vos notes resteront indéchiffrables.</p>
+
+        <h2 id="securite">🔒 Évaluation de la Sécurité</h2>
+        <p>✅ Vecteurs d'attaque neutralisés (Forces)<br>
+        Man-In-The-Middle (MITM) : Totalement inefficace. Si un FAI, un routeur Wi-Fi public ou les serveurs de Discord interceptent le message, ils n'obtiennent que du bruit.<br>
+        Analyse comportementale (IA) : Les données chiffrées sont pseudo-aléatoires. Les IA de modération, de censure ou de profilage publicitaire sont aveugles.<br>
+        Aspiration de données (Cloud Leak) : Application 100% hors-ligne. Pas de base de données à pirater.<br>
+        ⚠️ Limitations (Le Facteur Humain)<br>
+        La Sécurité Opérationnelle (OPSEC) : La robustesse du coffre dépend de la façon dont vous cachez la clé. Si vous envoyez votre Phrase Maître en clair par SMS à votre destinataire, le chiffrement est caduc. Transmettez vos clés de bouche à oreille.<br>
+        L'attaque par Brute-Force : Si votre phrase est trop évidente ("je mange une pomme") ou trop courte, un ordinateur pourrait tenter toutes les combinaisons du dictionnaire.<br>
+        Solution : C'est un système simple mais d'une robustesse absolue si l'utilisateur fait sa part du travail. Choisissez une phrase absurde et complexe, et changez-la périodiquement avec vos interlocuteurs.</p>
+
+        <h2 id="utilisation">🚀 Utilisation Rapide</h2>
+        <p>L'interface de Tadpole Cipher est conçue pour être maîtrisée en moins de 10 secondes. L'application est divisée en deux espaces distincts.<br>
+        <strong>Étape 1 : Le Sas d'Identification (Home)</strong><br>
+        1. Ouvrez l'application.<br>
+        2. Entrez votre Code PIN (4 chiffres). (Vous pouvez cliquer sur l'icône de l'œil pour masquer/révéler la saisie).<br>
+        3. Entrez votre Phrase Maître (3 mots minimum espacés).<br>
+        4. Dès que la condition de sécurité est remplie, l'icône pulsante Private Connectivity apparaît. Cliquez dessus pour accéder au terminal.<br>
+        <strong>Étape 2 : Le Terminal Tactique (Cipher)</strong><br>
+        Collez le texte clair (ou le texte chiffré reçu par un ami) dans la grande boîte supérieure. (Une icône "Coller" est disponible en haut à droite).<br>
+        Appuyez sur CHIFFRER (pour verrouiller) ou DÉCHIFFRER (pour lire). Le fluide en arrière-plan et le retour sonore valideront le succès de l'opération.<br>
+        Le résultat apparaît dans la boîte inférieure. Cliquez sur l'icône Copier (en bas à droite) pour l'envoyer où vous le souhaitez !</p>
+
+        <h2 id="legal">⚠️ Avertissement Légal</h2>
+        <p>Ce projet est publié en open-source à des fins strictement éducatives et de recherche. Il a été conçu pour démontrer l'efficacité des principes de la cryptographie symétrique, de l'architecture logicielle décentralisée et de l'intégration de shaders graphiques temps-réel en Flutter.<br>
+        L'auteur décline toute responsabilité quant à l'utilisation de cet outil dans des contextes illégaux, ou pour la transmission de données critiques/vitales. Rappelez-vous que la sécurité absolue n'existe pas en informatique, et que le maillon faible est toujours l'humain.</p>
+    </div>
+</main>
+<main>
+    
+    <section class="card">
+        <h2>📸 Captures d'Écran</h2>
+        <div class="media-grid">
+            <div class="media-item">
+                <img src="img/screen1.jpg" alt="Capture 1">
+                <p style="font-size: 0.8em; margin-top: 5px;">Home</p>
+            </div>
+            <div class="media-item">
+                <img src="img/screen2.jpg" alt="Capture 2">
+                <p style="font-size: 0.8em; margin-top: 5px;">Entered codes</p>
+            </div>
+            <div class="media-item">
+                <img src="img/screen3.jpg" alt="Capture 3">
+                <p style="font-size: 0.8em; margin-top: 5px;">Encryption Decryption</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>📺 Démonstration Vidéo</h2>
+        <p>Visualisation de l'application en action et rendu des shaders.</p>
+        
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/ID_VIDEO" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </section>
+</main>
+<footer>
+    <p>👨‍💻 Auteur : JOYXT pour JOYXT CORP ✉️ Contact : joyxt@proton.com</p>
+    <p>Développé dans la passion, la paranoïa bienveillante, et la joie.</p>
+</footer>
+</body>
+</html>
