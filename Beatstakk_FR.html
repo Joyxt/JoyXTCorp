@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeatStakk - FR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h1>BeatStakk</h1>
+    <div class="lang-switcher">
+        <button class="active">Français</button>
+        <button onclick="window.location.href='beatstakk_en.html'">English</button>
+    </div>
+</header>
+
+<nav class="toc">
+    <strong>Sommaire :</strong>
+    <a href="#raison">Raison d'Être</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#tutoriel">Tutoriel Officiel</a>
+    <a href="#flow">Flow de Composition</a>
+    <a href="#exemple">Exemple Pratique</a>
+    <a href="#legal">Légal</a>
+    <a href="index.html" style="color:var(--text-muted)">[Retour Accueil]</a>
+</nav>
+
+<main>
+    <div class="card">
+        <div style="text-align: center; margin-bottom: 20px;">
+            <img src="assets/images/BeatStakk_Playstore_Logo.png" alt="BeatStakk Logo" style="width: 20%; display: block; margin: 0 auto;">
+            <br>
+            <em>BeatStakk : La Groovebox de poche ultra-puissante pour capturer votre inspiration...</em>
+            <br><br>
+            <img src="Doc/images/BeatStakk_ScreenShot.jpeg" alt="BeatStakk Interface" style="width: 75%; border-radius: 8px;">
+        </div>
+
+        <h2 id="raison">🌟 La Raison d'Être</h2>
+        <p>BeatStakk est né d'une idée simple : avoir un beatmaker de poche robuste, sans compromis sur la qualité sonore. Plus qu'un simple lecteur de samples, c'est un véritable outil de <strong>Sound Design</strong> équipé d'une table de mixage et d'effets dignes de plugins professionnels.</p>
+        <p>Imaginez le workflow légendaire d'une <strong>Akai MPC</strong> croisé avec la philosophie d'un <strong>Teenage Engineering PO-33</strong>, le tout boosté par un puissant moteur DSP.</p>
+        <p>Petit, élégant et redoutablement efficace, BeatStakk s'adresse aussi bien aux professionnels cherchant à capturer une idée furtive en tournée, qu'aux amateurs passionnés. Sa grande stabilité en fait un instrument fiable pour des performances en <strong>Live</strong>, ou un outil de maquettage idéal avant une session studio grâce à ses options d'export multipistes. De plus, il favorise la communauté grâce à son format propriétaire ultra-léger permettant d'échanger vos compositions avec d'autres beatmakers en un clic.</p>
+
+        <h2 id="architecture">🏗️ Architecture et Choix Techniques</h2>
+        <p>Sous le capot, l'interface fluide développée en <strong>Flutter</strong> pilote un véritable monstre de calcul.</p>
+        <ul>
+            <li><strong>Moteur Audio C++ (Oboe) :</strong> Le traitement du signal (DSP) est codé en C++ natif. Polyphonie massive, filtres SVF (State Variable Filters) sans aucune latence, limiteurs de crêtes, et sécurités anti-clics.</li>
+            <li><strong>Format de Kits Ouvert (<code>.beatstakk</code>) :</strong> Vous n'êtes pas limité aux sons d'usine. L'application charge des kits externes à la volée. Un outil de création (un script <code>.bat</code> fourni) permet à n'importe quel utilisateur de fabriquer son propre kit en quelques secondes à partir de ses fichiers audio.</li>
+            <li><strong>Format de Projet Ultra-Léger (<code>.bbx</code> - BeatStakk Box) :</strong> Vos compositions (séquences, réglages des 12 filtres par pad, tempo) sont sauvegardées dans ce format JSON propriétaire. Il pèse quelques kilo-octets, ce qui permet de le partager instantanément par mail, messagerie ou Google Drive.</li>
+            <li><strong>Export Studio (<code>.wav</code>) :</strong> Le moteur C++ permet le rendu (Render) de vos boucles en fichiers audio WAV non compressés de haute qualité. Que ce soit le mixage global ou piste par piste.</li>
+        </ul>
+
+        <h2 id="tutoriel">📖 Tutoriel Officiel</h2>
+        <p>Découvrons l'interface pas à pas, de la gauche vers la droite de l'écran principal.</p>
+
+        <h3>1. Démarrage et Lecture (Play/Power)</h3>
+        <img src="Doc/images/UI_Power.png" alt="Aperçu de BeatStakk" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>Au lancement de l'application, les sons ne sont pas encore chargés dans la mémoire vive pour économiser votre batterie.</p>
+        <ul>
+            <li>Appuyez sur le <strong>bouton d'alimentation</strong>. Le moteur C++ va extraire les sons et les préparer.</li>
+            <li>Le bouton se transforme alors en bouton <strong>Play/Stop</strong>.</li>
+            <li>À ce stade, vous pouvez déjà tapoter sur les pads pour entendre les samples bruts, sans traitement.</li>
+        </ul>
+
+        <h3>2. Chargement de Kits</h3>
+        <img src="Doc/images/Ui_Kit.png" alt="Menu des Kits" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>Juste à droite, un menu déroulant vous permet de naviguer parmi les Kits. De base, <strong>3 Kits d'usine</strong> sont disponibles.</p>
+        <p>Lorsque vous changez de Kit, BeatStakk est intelligent et vous pose une question cruciale via une boîte de dialogue :</p>
+        <img src="Doc/images/Ui_Questions.png" alt="Message Changement Kit" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <ul>
+            <li><strong>[ KEEP ]</strong> : Conserve votre rythme (vos patterns) et vos effets, et remplace juste les instruments. Parfait pour tester votre groove avec de nouvelles sonorités !</li>
+            <li><strong>[ RESET ]</strong> : Remet l'application à zéro (patterns vides, effets réinitialisés) pour repartir d'une page blanche.</li>
+        </ul>
+        <p><em>(N'oubliez pas d'appuyer à nouveau sur le bouton Power pour charger le nouveau kit en mémoire !)</em></p>
+
+        <h3>3. Le Tempo (BPM)</h3>
+        <img src="Doc/images/Ui_BPM.png" alt="Bouton BPM" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>La boîte BPM vous indique le tempo de votre boucle. Appuyez sur le nombre pour faire apparaître le clavier numérique et définir une nouvelle vitesse (comprise entre 60 et 240 BPM).</p>
+
+        <h3>4. Importer vos propres Kits (.beatstakk)</h3>
+        <img src="Doc/images/Ui_ADDKIT.png" alt="Bouton Import Kit" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>L'icône musicale rouge vous permet d'importer des banques de sons externes.</p>
+        <p><strong>Comment créer un kit pour la communauté ?</strong></p>
+        <ol>
+            <li>Regroupez 8 fichiers <code>.wav</code> dans un dossier.</li>
+            <li>Glissez-y l'outil gratuit <code>BeatStakk_Kit_Maker.bat</code> <a href="Tools/BeatStakk_Kit_Maker.zip">disponible ici</a> et <a href="https://drive.google.com/file/d/1hg0mNo_TkWM26WSYjPLIEQE8mhA7salg/view?usp=sharing" target="_blank">sur Google Drive</a>.</li>
+            <li>Lancez le <code>.bat</code>. Il vous demandera le nom du kit et de vos pads, puis génèrera automatiquement un fichier <code>.beatstakk</code> prêt à être importé dans l'application !</li>
+        </ol>
+
+        <h3>5. Export Audio (WAV)</h3>
+        <img src="Doc/images/Ui_ExpWAVE.png" alt="Bouton Export WAV" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>L'icône des vagues permet d'exporter votre boucle actuelle en audio.</p>
+        <ul>
+            <li><strong>Mix complet :</strong> Appuyez directement pour générer la boucle globale.</li>
+            <li><strong>Multitap (Stems) :</strong> Si vous activez le mode <strong>SOLO</strong> sur un pad précis avant d'exporter, BeatStakk n'exportera que l'audio de ce pad avec ses effets (Delay, Reverb traînante incluse). Idéal pour recréer le morceau piste par piste dans un séquenceur PC/Mac (Ableton, FL Studio).</li>
+        </ul>
+
+        <h3>6. Gérer ses Projets (.bbx)</h3>
+        <img src="Doc/images/Ui_IMP_EXP.png" alt="Bouton Import/Export Compo" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <ul>
+            <li><strong>La Flèche vers le bas (Bleue) :</strong> Permet de charger un projet <code>.bbx</code> existant depuis votre téléphone. L'application ajustera le BPM, les effets, et chargera le kit correspondant automatiquement.</li>
+            <li><strong>La Flèche vers le haut (Verte) :</strong> Enregistre votre état actuel en créant un fichier <code>.bbx</code>. Vous serez invité à nommer votre composition.</li>
+            <li>Les fichiers peuvent se sauvegarder sur le téléphone, sur votre Drive ou en partage direct via messagerie.</li>
+        </ul>
+
+        <h3>7. Les Filtres et le Sound Design</h3>
+        <img src="Doc/images/Ui_Effects.png" alt="Zone des Filtres" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <p>Chaque pad dispose de sa propre tranche de console avec 12 paramètres. Vous pouvez naviguer entre 3 pages de contrôles en tapotant discrètement <strong>tout en bas de la zone des faders</strong>.</p>
+        
+        <p><strong>PAGE 1 : L'Essentiel</strong></p>
+        <ul>
+            <li><strong>VOL :</strong> Volume (peut monter jusqu'à 200% pour compenser la perte de gain des filtres).</li>
+            <li><strong>FLNG :</strong> Ajoute une coloration métallique et de la saturation (Flanger/Disto).</li>
+            <li><strong>PTCH (Pitch) :</strong> Accélère ou ralentit le sample (style Varispeed vinyle).</li>
+            <li><strong>RES (Résonance) :</strong> Filtre résonnant classique pour donner un côté "Laser" au son.</li>
+        </ul>
+
+        <p><strong>PAGE 2 : L'Espace</strong></p>
+        <ul>
+            <li><strong>DELY (Delay) :</strong> Crée un écho rythmique.</li>
+            <li><strong>CHRS (Chorus) :</strong> Élargit le son en le dupliquant.</li>
+            <li><strong>OVRD (Overdrive) :</strong> Saturation chaude (Tape Saturation) avec auto-makeup gain.</li>
+            <li><strong>FORM (Formant) :</strong> Filtre de type vocal qui donne une voix humaine (A-E-I-O-U) au sample.</li>
+        </ul>
+
+        <p><strong>PAGE 3 : La Sculpture (Enveloppes et EQ)</strong></p>
+        <ul>
+            <li><strong>ATTK (Attack) :</strong> Fait entrer le son progressivement (Fade-in).</li>
+            <li><strong>DECY (Decay) :</strong> Raccourcit le son pour le rendre plus percussif.</li>
+            <li><strong>HGPS (High-Pass) :</strong> Coupe les graves pour ne garder que le "clic" ou le "brillant".</li>
+            <li><strong>LWPS (Low-Pass) :</strong> Étouffe le son (effet "sous l'eau"). Les filtres sont sécurisés par un crossfade naturel anti-cliquetis.</li>
+        </ul>
+
+        <p><strong>Contrôles de Performance (Toggles)</strong></p>
+        <ul>
+            <li><strong>REVS :</strong> Joue le sample à l'envers (Reverse).</li>
+            <li><strong>MUTE :</strong> Coupe le son du pad.</li>
+            <li><strong>SOLO :</strong> Coupe tous les autres pads.</li>
+        </ul>
+        <p><em>(Astuce : Ces boutons sont parfaits pour structurer votre morceau lors d'une performance Live !)</em></p>
+
+        <h3>8. Les Pads et le Séquenceur</h3>
+        <img src="Doc/images/Ui_Patterns.png" alt="Séquenceur" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
+        <ul>
+            <li>Les <strong>8 Pads</strong> déclenchent la lecture manuelle (Finger Drumming). Toucher un pad sélectionne également sa piste.</li>
+            <li>En bas, les <strong>16 pas du séquenceur</strong> (Patterns) vous permettent de programmer la boucle du pad sélectionné. Les voyants s'allument à chaque passage de la tête de lecture.</li>
+        </ul>
+
+        <h2 id="flow">🎛️ Un Flow Classique de Composition</h2>
+        <ol>
+            <li><strong>Choisissez votre couleur :</strong> Chargez un Kit.</li>
+            <li><strong>Le design :</strong> Tapotez le pad de la caisse claire (Snare). Baissez le <em>Decay</em> pour la rendre plus sèche, ajoutez un léger <em>Pitch</em> et de l'<em>Overdrive</em> pour la faire claquer.</li>
+            <li><strong>Le Groove :</strong> Dessinez vos notes sur les 16 pas du séquenceur.</li>
+            <li><strong>La performance :</strong> Appuyez sur Play. Tout en écoutant tourner la boucle, jouez avec le Low-Pass du Hit-hat en direct pour créer des montées (Build-ups). Jouez avec les boutons Mute pour retirer la basse, puis ramenez-la d'un coup (Drop).</li>
+            <li><strong>Sauvegarde :</strong> Enregistrez votre projet, ou exportez le fichier WAV pour vos amis.</li>
+        </ol>
+
+        <h2 id="exemple">🎧 Exemple Pratique</h2>
+        <p>Essayez par vous-même !</p>
+        <ol>
+            <li>Téléchargez le <strong>Kit Jungle</strong> : <a href="https://drive.google.com/file/d/19Ub7Polo5InMxgsC59vypetd4v2DM2sg/view?usp=sharing" target="_blank">[Lien Drive vers le kit .beatstakk]</a></li>
+            <li>Téléchargez ce <strong>Projet Demo</strong> : <a href="https://drive.google.com/file/d/1XebCgmjNtknM7NteTGm-o6sNWkcVsdc2/view?usp=sharing" target="_blank">[Lien Drive vers le projet .bbx]</a></li>
+            <li>Importez les deux dans l'application, appuyez sur Play, et observez comment les filtres transcendent les sons bruts !</li>
+            <li>Chargez DRUMSHARD et choisissez <strong>KEEP</strong>. Expérimentez vos patterns directement avec un autre kit.</li>
+        </ol>
+        <p>Ce flux de travail hybride, entre jeu immédiat et design chirurgical, est ce qui rend BeatStakk unique et incroyablement addictif.</p>
+
+        <h2 id="legal">⚖️ Avertissement Légal</h2>
+        <p>L'application <em>BeatStakk</em> est fournie en tant qu'outil matériel virtuel.<br>
+        Les kits d'usine fournis respectent les droits d'auteur, mais <em>Joyxt Corp</em> n'est en aucun cas responsable des fichiers audio (samples) que les utilisateurs importent, utilisent ou distribuent via le format <code>.beatstakk</code>.<br>
+        Assurez-vous de posséder les droits ou l'autorisation (Royalty-Free) des samples que vous utilisez si vous comptez commercialiser vos pistes audio exportées. Le piratage d'œuvres protégées est la responsabilité exclusive de l'utilisateur final.</p>
+    </div>
+</main>
+
+<main>
+    <section class="card">
+        <h2>📺 Démonstration Vidéo</h2>
+        <p>Visualisation de l'application en action, manipulation des filtres et création de boucles en temps réel.</p>
+        
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/amXvV6WuM1E" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>👨‍💻 Auteur : JOYXT pour JOYXT CORP ✉️ Contact : joyxt@protonmail.com</p>
+    <p>Développé dans la passion, dans une boucle de bienveillance, et dans la joie.</p>
+</footer>
+</body>
+</html>
