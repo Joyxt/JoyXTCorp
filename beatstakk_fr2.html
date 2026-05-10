@@ -47,13 +47,13 @@
             <li><strong>Moteur Audio C++ (Oboe) :</strong> Le traitement du signal (DSP) est codé en C++ natif. Polyphonie massive, filtres SVF (State Variable Filters) sans aucune latence, limiteurs de crêtes, et sécurités anti-clics.</li>
             <li><strong>Format de Kits Ouvert (<code>.beatstakk</code>) :</strong> Vous n'êtes pas limité aux sons d'usine. L'application charge des kits externes à la volée. Un outil de création (un script <code>.bat</code> fourni) permet à n'importe quel utilisateur de fabriquer son propre kit en quelques secondes à partir de ses fichiers audio.</li>
             <li><strong>Format de Projet Ultra-Léger (<code>.bbx</code> - BeatStakk Box) :</strong> Vos compositions (séquences, réglages des 12 filtres par pad, tempo) sont sauvegardées dans ce format JSON propriétaire. Il pèse quelques kilo-octets, ce qui permet de le partager instantanément par mail, messagerie ou Google Drive.</li>
-            <li><strong>Export SStudio (<code>.wav</code>) :</strong> Le moteur C++ permet le rendu (Render) de vos boucles en fichiers audio WAV non compressés de haute qualité. Que ce soit le mixage global ou piste par piste.</li>
+            <li><strong>Export Studio (<code>.wav</code>) :</strong> Le moteur C++ permet le rendu (Render) de vos boucles en fichiers audio WAV non compressés de haute qualité. Que ce soit le mixage global ou piste par piste.</li>
         </ul>
 
         <h2 id="tutoriel">📖 Tutoriel Officiel</h2>
         <p>Découvrons l'interface pas à pas, de la gauche vers la droite de l'écran principal.</p>
 
-        <h3>1. Démarragee et Lecture (Play/Power)</h3>
+        <h3>1. Démarrage et Lecture (Play/Power)</h3>
         <img src="img/UI_Power.png" alt="BeatStakk Power" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
         <p>Au lancement de l'application, les sons ne sont pas encore chargés dans la mémoire vive pour économiser votre batterie.</p>
         <ul>
@@ -105,7 +105,7 @@
 
         <h3>7. Les Filtres et le Sound Design</h3>
         <img src="img/Ui_Effects.png" alt="Zone des Filtres" style="max-width: 100%; border-radius: 6px; margin: 10px 0;">
-        <p>Chaque pad dispose de sa propre tranche de console avec 12 paramètres. Vous pouvez naviguer entre 3 pages de contrôles en tapotant discrètement <strong>tout en bas de la zone des faders</strong>.</p>
+        <p>Chaque pad dispose de sa propre tranche de console de sound design. Vous pouvez naviguer entre 5 pages de contrôles en tapotant discrètement <strong>tout en bas de la zone des faders</strong>.</p>
         
         <p><strong>PAGE 1 : L'Essentiel</strong></p>
         <ul>
@@ -129,6 +129,31 @@
             <li><strong>DECY (Decay) :</strong> Raccourcit le son pour le rendre plus percussif.</li>
             <li><strong>HGPS (High-Pass) :</strong> Coupe les graves pour ne garder que le "clic" ou le "brillant".</li>
             <li><strong>LWPS (Low-Pass) :</strong> Étouffe le son (effet "sous l'eau"). Les filtres sont sécurisés par un crossfade naturel anti-cliquetis.</li>
+        </ul>
+
+        <p><strong>PAGE 4 : Mutilation & Modulation</strong></p>
+        <img src="img/Ui_Effects_page4.png" alt="[Effects Ring PHSR CRSH PAN]" style="max-width: 100%; border-radius: 6px; margin: 10px 0; border: 1px dashed gray;">
+        <ul>
+            <li><strong>RING (Ring Modulator) :</strong> Multiplie le signal pour créer des harmoniques dissonantes, robotiques ou métalliques (idéal pour le sound design sci-fi).</li>
+            <li><strong>PHSR (Phaser) :</strong> Filtre passe-tout à 4 étages générant une annulation de phase profonde (le fameux effet balayage "Vaisseau Spatial").</li>
+            <li><strong>CRSH (Bitcrusher) :</strong> Dégrade agressivement la résolution du sample pour un rendu Lo-Fi old-school très saturé.</li>
+            <li><strong>PAN (Tremolo) :</strong> Hache le volume du signal de manière cyclique. Poussé à l'extrême, il transforme un son continu en effet "hélicoptère".</li>
+        </ul>
+
+        <p><strong>PAGE 5 : Dynamique & Compression</strong></p>
+        <img src="img/Ui_Effects_page5.png" alt="[Effects PUMP SLAM CLIP OTT PNCH FAT BRIK]" style="max-width: 100%; border-radius: 6px; margin: 10px 0; border: 1px dashed gray;">
+        <ul>
+            <li><strong>PUMP :</strong> Effet de Sidechain naturel qui "creuse" rythmiquement le volume pour faire respirer la boucle.</li>
+            <li><strong>Le Rack de Compression Exclusif :</strong> Six algorithmes destructeurs (un seul activable à la fois) pour gonfler vos samples :
+                <ul>
+                    <li><strong>SLAM :</strong> Compression agressive (ratio massif) pour écraser le son et lui donner un bloc d'énergie maximale.</li>
+                    <li><strong>CLIP :</strong> Hard Clipping saturé qui écrête violemment les pics audio.</li>
+                    <li><strong>OTT :</strong> Compression ascendante poussée à l'extrême pour faire hurler les queues de réverbération et les détails silencieux.</li>
+                    <li><strong>PNCH (Punch) :</strong> Transient Shaper sec, parfait pour faire percer l'attaque d'un kick dans le mix.</li>
+                    <li><strong>FAT :</strong> Compression asymétrique émulant une lampe analogique poussée à saturation pour épaissir le bas du spectre.</li>
+                    <li><strong>BRIK (Brickwall) :</strong> Limiteur pur poussé par un gain d'entrée démesuré pour un résultat parfaitement plat et monolithique.</li>
+                </ul>
+            </li>
         </ul>
 
         <p><strong>Contrôles de Performance (Toggles)</strong></p>
