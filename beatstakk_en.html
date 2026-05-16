@@ -22,6 +22,7 @@
     <a href="#tutoriel">Official Tutorial</a>
     <a href="#flow">Composition Flow</a>
     <a href="#exemple">Practical Example</a>
+    <a href="#kitmaker">Create Your Kit</a>
     <a href="#legal">Legal</a>
     <a href="index.html" style="color:var(--text-muted)">[Back to Home]</a>
 </nav>
@@ -189,6 +190,46 @@
             <li>Load DRUMSHARD and choose <strong>KEEP</strong>. Experiment with your patterns directly with another kit.</li>
         </ol>
         <p>This hybrid workflow, between immediate playing and surgical design, is what makes BeatStakk unique and incredibly addictive.</p>
+
+        <h2 id="kitmaker">🛠️ Tutorial: Create Your Own Kit with BeatStakk_Kit_Maker</h2>
+        <p>This utility was designed to make your life as easy as possible. You don't need to code or even manually rename your files, the script handles all the formatting!</p>
+
+        <h3>1. Folder Preparation</h3>
+        <ul>
+            <li>Create a new folder on your computer.</li>
+            <li>Place the utility file <strong>BeatStakk_Kit_Maker.bat</strong> inside it.</li>
+            <li>Add at least 8 of your own audio files in <strong>.wav</strong> format to this same folder.</li>
+            <li>There's no need to rename them: the script will automatically copy the first 8 files it finds and rename them correctly in the background.</li>
+        </ul>
+
+        <h3>2. Launching the Utility</h3>
+        <ul>
+            <li>Simply double-click the <strong>BeatStakk_Kit_Maker.bat</strong> file to launch the console.</li>
+            <li>The script will first verify that you have the minimum required 8 <code>.wav</code> files.</li>
+        </ul>
+
+        <h3>3. Kit Configuration</h3>
+        <ul>
+            <li><strong>Kit Name:</strong> The tool asks you to type a name for your kit, limited to 10 characters. Enter it and press Enter. Spaces will automatically be converted to underscores for the creation of the final file.</li>
+            <li><strong>Pad Names:</strong> For each of the 8 detected sounds, the tool asks you to enter a short name that will be displayed on the application's interface.</li>
+            <li>Type freely: the script automatically cleans quotes, replaces accented letters with simple ones, converts the text to uppercase, and cuts words to a maximum of 7 characters to ensure a perfect display on screen.</li>
+        </ul>
+
+        <h3>4. Validation and Creation</h3>
+        <ul>
+            <li>The tool displays a clear summary of your choices (Kit name, output file name, and the list of your 8 pads).</li>
+            <li>Type <strong>Y</strong> and then press Enter to confirm the creation.</li>
+            <li>The script then automatically generates the <code>metadata.json</code> configuration file, places your audio files into a zipped archive, and transforms it in the blink of an eye into a file with the <strong>.beatstakk</strong> extension.</li>
+        </ul>
+
+        <h3>5. Importing into BeatStakk</h3>
+        <ul>
+            <li>A success message is displayed confirming that your file is ready.</li>
+            <li>Transfer this new <code>.beatstakk</code> file to your Android phone.</li>
+            <li>Open the BeatStakk application.</li>
+            <li>Press the red <strong>Import Kit</strong> button located in the top bar.</li>
+            <li>Select your file: the application loads it instantly and your kit is ready to be played!</li>
+        </ul>
 
         <h2 id="legal">⚖️ Legal Disclaimer</h2>
         <p>The <em>BeatStakk</em> application is provided as a virtual hardware tool.<br>
